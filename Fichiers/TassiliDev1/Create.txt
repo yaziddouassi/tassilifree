@@ -20,22 +20,6 @@
 
                 <form @submit.prevent="submit">
     
-                    <div>
-                    <select v-model="form.panel" class="w-full mt-[10px]">
-                      <option :value="''" class="h-[50px]">
-                             Choose panel
-                      </option>
-                     <option
-                           v-for="option in props.panelList"
-                          :key="option"
-                           :value="option"
-                          >
-                       {{ option }}
-                     </option> 
-                    </select>
-                  </div>
-
-                <div v-if="form.errors.panel" class="text-[red]">{{ form.errors.panel }}</div>
 
 
                  <div class="mt-[10px]">
@@ -72,10 +56,6 @@ import { useForm } from '@inertiajs/vue3'
 import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
-   panelList: {
-    type: Object,
-    required: true
-  },
     listModels: {
     type: Object,
     required: true
@@ -86,7 +66,6 @@ const props = defineProps({
 
 const form = useForm({
   selected: [] ,
-  panel : '' ,
 })
 
 const notyf = new Notyf({ position: { x: 'right', y: 'top' } });

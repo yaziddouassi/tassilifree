@@ -8,7 +8,7 @@ export const TassiliRoutes = defineStore('routes', {
   
   actions: {
     
-    setRoutes(a , panel) {
+    setRoutes(a) {
       // 🔧 Copie profonde pour ne pas modifier props.routes
      let b = JSON.parse(JSON.stringify(a))
      const panelStorage = 'tassili'
