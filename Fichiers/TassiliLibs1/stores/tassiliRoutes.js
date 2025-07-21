@@ -11,7 +11,7 @@ export const TassiliRoutes = defineStore('routes', {
     setRoutes(a , panel) {
       // 🔧 Copie profonde pour ne pas modifier props.routes
      let b = JSON.parse(JSON.stringify(a))
-     const panelStorage = 'tassili.' + panel
+     const panelStorage = 'tassili'
     
       if (!localStorage.getItem(panelStorage)) {
         localStorage.setItem(panelStorage, JSON.stringify({}))

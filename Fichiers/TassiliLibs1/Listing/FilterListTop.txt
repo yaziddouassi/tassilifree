@@ -73,7 +73,7 @@ const page = usePage()
 const open = ref(false)
 const tassililisting = TassiliListing();
 const tassiliroutes  = TassiliRoutes();
-const panelStorage = 'tassili.' + page.props.tassiliPanel
+const panelStorage = 'tassili' 
 
 function rezetActionIds() {
   tassililisting.show = false
@@ -98,7 +98,7 @@ function rezetFilter() {
   tassililisting.actionIds = []
   localStorage.setItem(panelStorage, JSON.stringify(tassili))
 
-  tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+  tassiliroutes.setRoutes(page.props.routes)
 
   router.visit(page.props.tassiliSettings.tassiliDataRouteListe, {
     method: 'get',

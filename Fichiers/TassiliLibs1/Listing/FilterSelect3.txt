@@ -52,7 +52,7 @@
   const page = usePage()
   const tassiliroutes  = TassiliRoutes();
   const tassililisting = TassiliListing();
-  const panelStorage = 'tassili.' + page.props.tassiliPanel
+  const panelStorage = 'tassili'
   const url = new URL(window.location.href)
   const params = new URLSearchParams(url.search)
 
@@ -86,7 +86,7 @@ if (params.has(props.cle)) {
       }
 
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+      tassiliroutes.setRoutes(page.props.routes)
   
       const url = new URL(window.location.href)
       const params = new URLSearchParams(url.search)
@@ -103,7 +103,7 @@ if (params.has(props.cle)) {
       
       delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+      tassiliroutes.setRoutes(page.props.routes)
   
       const url = new URL(window.location.href)
       const params = new URLSearchParams(url.search)
@@ -126,7 +126,7 @@ if (params.has(props.cle)) {
     myInput.value = ''
      delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
      localStorage.setItem(panelStorage, JSON.stringify(tassili))
-     tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+     tassiliroutes.setRoutes(page.props.routes)
   
     const url = new URL(window.location.href)
     const params = new URLSearchParams(url.search)

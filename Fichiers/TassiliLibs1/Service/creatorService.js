@@ -12,7 +12,7 @@ export function creatorService() {
   function initForm() {
  
 
-   tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+   tassiliroutes.setRoutes(page.props.routes)
    tassiliInput.form = page.props.tassiliFields
    tassiliInput.formStart = JSON.parse(JSON.stringify(page.props.tassiliFields))
 

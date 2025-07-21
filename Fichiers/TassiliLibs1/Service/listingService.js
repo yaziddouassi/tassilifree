@@ -12,7 +12,7 @@ export function listingService() {
    const tassililisting = TassiliListing();
    const tassiliInput = TassiliInput()
 
-   tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+   tassiliroutes.setRoutes(page.props.routes)
    tassililisting.groupActions = page.props.groupActions
    tassililisting.allFilters = page.props.allFilters
    tassililisting.customFilters = page.props.customFilters

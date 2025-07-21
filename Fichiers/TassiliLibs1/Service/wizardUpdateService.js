@@ -11,7 +11,7 @@ export function wizardUpdateService() {
   function initForm() {
   
 
-   tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+   tassiliroutes.setRoutes(page.props.routes)
    tassiliInput.form = page.props.tassiliFields
    tassiliInput.wizardInfo = JSON.parse(JSON.stringify(page.props.tassiliWizardInfo))
    tassiliInput.wizardCurrent = 1

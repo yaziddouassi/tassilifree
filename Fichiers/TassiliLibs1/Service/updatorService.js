@@ -11,7 +11,7 @@ export function updatorService() {
   function initForm() {
   
 
-   tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)
+   tassiliroutes.setRoutes(page.props.routes)
    tassiliInput.form = page.props.tassiliFields
 
 
