@@ -7,8 +7,8 @@ class WizardPart
 {
    public $piece1;
    public $piece2;
-   public $piece3 ;
-   
+   public $piece3;
+   public $piece4;
 
 public function getPiece1($a,$b,$c,$middleware) {
 
@@ -388,6 +388,47 @@ class ListingController extends Listing
 
       return $this->piece3;
       }
+
+
+      public function getPiece4($a,$b,$c,$middleware) {
+
+         $this->piece4 = "<?php
+
+namespace App\Http\Controllers\Tassili\Admin\Crud\\$a\Customs;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Inertia\Response;
+use Spatie\RouteAttributes\Attributes\Get;
+use Spatie\RouteAttributes\Attributes\Post;
+
+
+
+class Custom1Controller extends Controller
+{
+   #[Get('admin/$c/page1',middleware : ['$middleware'])]
+    public function index(Request \$request)
+    {
+ 
+        return Inertia::render('TassiliPages/Admin/Crud/$a/Customs/Custom1',
+        [
+          'user' => \Illuminate\Support\Facades\Auth::user(),
+          'routes' =>  \Tassili\Free\Models\TassiliCrud::where('active',true)->get(),
+          'tassiliUrlStorage' => config('tassili.storage_url') ,
+        ]
+    );
+    }
+}
+         
+         ";
+
+    return $this->piece4;
+
+    }
 
 
 

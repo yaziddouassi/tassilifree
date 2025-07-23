@@ -52,8 +52,10 @@ class WizardCommand extends Command
         $piece1 = $crudPart->getPiece1($choix, $modelLink, $modelUrl,$choix2);
         $piece2 = $crudPart->getPiece2($choix, $modelLink, $modelUrl,$choix2);
         $piece3 = $crudPart->getPiece3($choix, $modelLink, $modelUrl,$choix2);
+        $piece4 = $crudPart->getPiece4($choix, $modelLink, $modelUrl,$choix2);
 
         $dossier = base_path("app/Http/Controllers/Tassili/Admin/Crud/{$choix}");
+        $custom = "{$dossier}/Customs";
 
         if (File::exists($dossier)) {
             $this->error('❌ CRUD already exists.');
@@ -61,10 +63,12 @@ class WizardCommand extends Command
         }
 
         File::makeDirectory($dossier, 0755, true);
+        File::makeDirectory($custom, 0755, true);
 
         File::put("{$dossier}/CreatorController.php", $piece1);
         File::put("{$dossier}/UpdatorController.php", $piece2);
         File::put("{$dossier}/ListingController.php", $piece3);
+        File::put("{$custom}/Custom1Controller.php", $piece4);
 
         $crud = new \Tassili\Free\Models\TassiliCrud() ;
         $crud->model = $choix;
