@@ -26,6 +26,8 @@ class TassiliServiceProvider extends ServiceProvider
 
         $this->commands([
             \Tassili\Free\Commands\TassiliCreator::class,
+            \Tassili\Free\Commands\CrudCommand::class,
+            \Tassili\Free\Commands\WizardCommand::class,
         ]);
         
     }

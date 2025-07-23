@@ -37,7 +37,7 @@ const mergeQuery = (url) => {
       <Link
         preserve-state
         preserve-scroll
-        :href="mergeQuery(link.url)"
+        :href="link.url ? mergeQuery(link.url) : ''"
         v-html="link.label"
         class="flex items-center justify-center px-3 py-2 text-sm rounded-lg text-gray-600 border border-grey"
         :class="{
