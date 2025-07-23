@@ -17,8 +17,6 @@ public function getPiece1($a,$b,$c,$middleware) {
 
 namespace App\Http\Controllers\Tassili\Admin\Crud\\$a;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -362,7 +360,6 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
-
 
 
 class Custom1Controller extends Controller

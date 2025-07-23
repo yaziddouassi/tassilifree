@@ -25,7 +25,6 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
-use Spatie\RouteAttributes\Attributes\Montre;
 use Tassili\Free\Http\Controllers\WizardCreate;
 use Tassili\Free\Fields\TextInput;
 
@@ -113,8 +112,6 @@ class CreatorController extends WizardCreate
 
 namespace App\Http\Controllers\Tassili\Admin\Crud\\$a;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -123,7 +120,6 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
-use Spatie\RouteAttributes\Attributes\Montre;
 use Tassili\Free\Http\Controllers\WizardUpdate;
 use Tassili\Free\Fields\TextInput;
 
@@ -232,7 +228,6 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
-use Spatie\RouteAttributes\Attributes\Montre;
 use Tassili\Free\Http\Controllers\Listing;
 use Tassili\Free\Fields\TextInput;
 use Tassili\Free\Filters\FilterText;
@@ -405,7 +400,6 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
-
 
 
 class Custom1Controller extends Controller
