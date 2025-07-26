@@ -174,6 +174,7 @@ class TassiliCreator extends Command
             }
 
 
+        $this->info("✅ Package Tassili Free installed!");
 
 
 
