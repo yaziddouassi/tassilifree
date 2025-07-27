@@ -127,7 +127,7 @@ class UpdatorController extends TassiliUpdate
 
 
     #[Post('admin/$c/updator/validation',middleware : ['$middleware'])]
-    public function create(Request \$request)
+    public function update(Request \$request)
     {
 
 
