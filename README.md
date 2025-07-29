@@ -60,7 +60,7 @@ createInertiaApp({
 
 ---
 
-### 2-bis. Configure if you are using typescript `resources/js/app.ts` 
+### 2-b. Configure if you are using typescript `resources/js/app.ts` 
 
 ```js
 import '../css/app.css';
@@ -125,7 +125,7 @@ Update your `resources/views/app.blade.php`:
 
 ---
 
-### 3-bis. Update Blade Template if you are using typescript
+### 3-b. Update Blade Template if you are using typescript
 
 Update your `resources/views/app.blade.php`:
 
