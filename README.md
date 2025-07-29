@@ -1,6 +1,6 @@
 # 🧱 TASSILI - Laravel Inertia CRUD Generator
 
-**TASSILI** is a full-featured CRUD generator package built with Laravel + Inertia.js + Vue 3. It comes with powerful tools such as Pinia for state management, Quill.js for rich text editing, and Chart.js for data visualization. Here is the web site https://laravel-hoggar.dev
+**TASSILI** is a full-featured CRUD generator package built with Laravel + Inertia.js + Vue 3. It comes with powerful tools such as Pinia for state management, Quill.js for rich text editing, and Chart.js for data visualization. Here is the web site https://rabahdouassi.net/tassili-free/docs/1.x/installation
 
 ---
 
@@ -202,7 +202,7 @@ Access the admin panel at:
 
 ## 📘 License
 
-This project is licensed under a commercial license via [Gumroad](https://gumroad.com/).
+This project is licensed under a commercial license via [Gumroad](https://yazid4.gumroad.com/l/yyfte).
 
 ---
 
