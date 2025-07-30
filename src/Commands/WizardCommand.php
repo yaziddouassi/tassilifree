@@ -30,29 +30,17 @@ class WizardCommand extends Command
 
         $this->info("You Choose this model : $choix");
 
-        $middlewareList = config('tassili.middlewareList', []);
-
-        if (empty($middlewareList)) {
-            $this->error("No Middleware in config('tassili.middlewareList').");
-            return 1;
-        }
-
-        $choix2 = $this->choice('Choose a middleware ?',$middlewareList ,0);
-
-        $this->info("You Choose this middleware : $choix2"); 
-        
-        
-
+       
         $transform = new TransformString();
         $crudPart = new WizardPart();
 
         $modelLink = $transform->transformLink($choix);
         $modelUrl = $transform->transformUrl($choix);
 
-        $piece1 = $crudPart->getPiece1($choix, $modelLink, $modelUrl,$choix2);
-        $piece2 = $crudPart->getPiece2($choix, $modelLink, $modelUrl,$choix2);
-        $piece3 = $crudPart->getPiece3($choix, $modelLink, $modelUrl,$choix2);
-        $piece4 = $crudPart->getPiece4($choix, $modelLink, $modelUrl,$choix2);
+        $piece1 = $crudPart->getPiece1($choix, $modelLink, $modelUrl);
+        $piece2 = $crudPart->getPiece2($choix, $modelLink, $modelUrl);
+        $piece3 = $crudPart->getPiece3($choix, $modelLink, $modelUrl);
+        $piece4 = $crudPart->getPiece4($choix, $modelLink, $modelUrl);
 
         $dossier = base_path("app/Http/Controllers/Tassili/Admin/Crud/{$choix}");
         $custom = "{$dossier}/Customs";

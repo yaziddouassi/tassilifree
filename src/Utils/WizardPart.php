@@ -10,7 +10,7 @@ class WizardPart
    public $piece3;
    public $piece4;
 
-public function getPiece1($a,$b,$c,$middleware) {
+public function getPiece1($a,$b,$c) {
 
 
     $this->piece1 = "<?php
@@ -54,7 +54,7 @@ class CreatorController extends WizardCreate
     }
 
 
-    #[Post('admin/$c/create/validation',middleware : ['$middleware'])]
+    #[Post('admin/$c/create/validation',middleware : ['tassili.auth'])]
     public function create(Request \$request)
     {
 
@@ -79,7 +79,7 @@ class CreatorController extends WizardCreate
     }
     
 
-    #[Get('admin/$c/create',middleware : ['$middleware'])]
+    #[Get('admin/$c/create',middleware : ['tassili.auth'])]
     public function index(Request \$request)
     {
 
@@ -107,7 +107,7 @@ class CreatorController extends WizardCreate
 
 
 
-   public function getPiece2($a,$b,$c,$middleware) {
+   public function getPiece2($a,$b,$c) {
           $this->piece2 = "<?php
 
 namespace App\Http\Controllers\Tassili\Admin\Crud\\$a;
@@ -151,7 +151,7 @@ class UpdatorController extends WizardUpdate
     }
 
 
-    #[Post('admin/$c/updator/validation',middleware : ['$middleware'])]
+    #[Post('admin/$c/updator/validation',middleware : ['tassili.auth'])]
     public function update(Request \$request)
     {
 
@@ -178,7 +178,7 @@ class UpdatorController extends WizardUpdate
     }
 
 
-    #[Get('admin/$c/update/{id}',middleware : ['$middleware'])]
+    #[Get('admin/$c/update/{id}',middleware : ['tassili.auth'])]
     public function index(Request \$request)
     {
 
@@ -214,7 +214,7 @@ class UpdatorController extends WizardUpdate
 
 
    
-   public function getPiece3($a,$b,$c,$middleware) {
+   public function getPiece3($a,$b,$c) {
 
       $this->piece3 = "<?php
 
@@ -245,7 +245,7 @@ class ListingController extends Listing
     public   \$tassiliDataUrlCreate = '/admin/$c/create' ;
     public   \$tassiliDataUrlCheckRecord = '/admin/$c/CheckRecord' ;
     public   \$urlDelete = '/admin/$c/delete';
-    public   \$paginationPerPageList = [1,2,3,4] ;
+    public   \$paginationPerPageList = [10,20,30,40,50] ;
     public   \$orderByFieldList = ['id'] ;
     public   \$orderDirectionList = ['asc','desc'] ;
     public   \$sessionFilter = [/*'search','paginationPerPage','orderByField','orderDirection' */] ;
@@ -283,7 +283,7 @@ class ListingController extends Listing
             ]);
         }
 
-    #[Post('admin/$c/action1',middleware : ['$middleware'])]
+    #[Post('admin/$c/action1',middleware : ['tassili.auth'])]
     public function action1(Request \$request)
         {  
 
@@ -317,7 +317,7 @@ class ListingController extends Listing
 
         }
 
-    #[Post('admin/$c/custom1',middleware : ['$middleware'])]
+    #[Post('admin/$c/custom1',middleware : ['tassili.auth'])]
     public function custom1(Request \$request)
         {  
           
@@ -346,7 +346,7 @@ class ListingController extends Listing
     
     
         
-    #[Post('admin/$c/delete',middleware : ['$middleware'])]
+    #[Post('admin/$c/delete',middleware : ['tassili.auth'])]
     public function delete(Request \$request)
         {  
             \$this->tassiliModelClass::destroy(\$request->id);
@@ -354,7 +354,7 @@ class ListingController extends Listing
 
     
 
-    #[Get('admin/$c',middleware : ['$middleware'])]
+    #[Get('admin/$c',middleware : ['tassili.auth'])]
     public function index(Request \$request)
     {
 
@@ -385,7 +385,7 @@ class ListingController extends Listing
       }
 
 
-      public function getPiece4($a,$b,$c,$middleware) {
+      public function getPiece4($a,$b,$c) {
 
          $this->piece4 = "<?php
 
@@ -404,7 +404,7 @@ use Spatie\RouteAttributes\Attributes\Post;
 
 class Custom1Controller extends Controller
 {
-   #[Get('admin/$c/page1',middleware : ['$middleware'])]
+   #[Get('admin/$c/page1',middleware : ['tassili.auth'])]
     public function index(Request \$request)
     {
  

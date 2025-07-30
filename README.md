@@ -177,7 +177,21 @@ php artisan storage:link
 
 ---
 
-### 6. Create Admin User
+### 6. Register Tassili Middleware
+
+In your `bootstrap/app.php`, add:
+
+```php
+$middleware->alias([
+    'tassili.auth' => \App\Http\Middleware\TassiliAuth::class,
+]);
+```
+
+---
+
+
+
+### 7. Create Admin User
 
 ```bash
 php artisan make:tassili-user

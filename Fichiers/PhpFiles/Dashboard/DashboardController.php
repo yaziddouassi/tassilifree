@@ -19,7 +19,7 @@ class DashboardController extends Controller
 
    public   $tassiliPanel = 'admin' ;
 
-   #[Get('admin',middleware : ['auth'])]
+   #[Get('admin',middleware : ['tassili.auth'])]
     public function index(Request $request)
     {
         

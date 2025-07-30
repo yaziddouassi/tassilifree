@@ -44,7 +44,9 @@ class LoginController extends Controller
    #[Get('admin/login')]
     public function index(Request $request)
     {
-        
+         if (Auth::check()) {
+              return redirect($this->urlToRedirect);
+         }
         return Inertia::render('TassiliPages/Admin/Dashboard/Login', [
             'tassiliPanel' => $this->tassiliPanel,
             'company' => config('tassili.company') ,
