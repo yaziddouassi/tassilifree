@@ -30,15 +30,7 @@ class TassiliCreator extends Command
      */
     public function handle()
     {
-       $path = resource_path('js/Vendor');
-
-        if (!File::exists($path)) {
-             File::makeDirectory($path, 0755, true);
-         }
-
-         //////////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////
+           $path = resource_path('js/Vendor');
 
            $sourcePath = base_path('vendor/tassili/free/Fichiers/PhpFiles');
 
@@ -48,6 +40,10 @@ class TassiliCreator extends Command
                  $this->error("Package alreay installed");
                  return Command::FAILURE;
             }
+
+            if (!File::exists($path)) {
+             File::makeDirectory($path, 0755, true);
+         }
          
             File::copyDirectory($sourcePath, $destinationPath);
             //////////////////////////////////////////////////////////////////////////////////

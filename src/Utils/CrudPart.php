@@ -364,7 +364,7 @@ use Spatie\RouteAttributes\Attributes\Post;
 
 class Custom1Controller extends Controller
 {
-   #[Get('admin/$c/page1',middleware : ['tassili.auth'])]
+ //  #[Get('admin/$c/page1',middleware : ['tassili.auth'])]
     public function index(Request \$request)
     {
  
