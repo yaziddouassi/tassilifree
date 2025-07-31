@@ -36,7 +36,7 @@ class TassiliCreator extends Command
 
             $destinationPath = base_path('app/Http/Controllers/Tassili/Admin');
 
-            if (File::exists($destinationPath) || File::exists($path)) {
+            if (File::exists($destinationPath)) {
                  $this->error("Package alreay installed");
                  return Command::FAILURE;
             }
