@@ -6,7 +6,7 @@
      
      <div>
         <input class="w-full  bg-[#555] h-[50px]
-      border-[darkblue] border-[1px] text-white"
+      border-[#666] border-[1px] text-white"
          type="number" v-model="tassiliInput.form[props.cle]['value']"
          :min="tassiliInput.form[props.cle]['options'].min !== 'infinite' ?
                  tassiliInput.form[props.cle]['options'].min : null"
