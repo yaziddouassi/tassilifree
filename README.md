@@ -165,7 +165,7 @@ TASSILI_STORAGE_URL=http://127.0.0.1:8000/storage/
 
 ---
 
-### 5. Install Hoggar
+### 5. Install Tassili
 
 ```bash
 composer require tassili/free

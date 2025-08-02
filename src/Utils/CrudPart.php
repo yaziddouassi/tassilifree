@@ -133,7 +133,7 @@ class UpdatorController extends TassiliUpdate
 
       
         \$request->validate([
-          'name' => [],
+          'name' => ['required'],
         ]);
 
          \$this->tassiliRecord = \$this->tassiliModelClass::find(\$request->id);
