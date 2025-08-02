@@ -27,6 +27,7 @@ class DashboardController extends Controller
             
             'user' => \Illuminate\Support\Facades\Auth::user(),
             'routes' =>  \Tassili\Free\Models\TassiliCrud::where('active',true)->get(),
+            'company' => config('tassili.company'),
             'chart1' => ['datas' => [mt_rand(1, 12),mt_rand(1, 12),mt_rand(1, 12)],
                          'labels'  => ['Jan','Fev','Mars'] ],
             'chart2' => ['datas' => [mt_rand(1, 12),mt_rand(1, 12),mt_rand(1, 12)],
