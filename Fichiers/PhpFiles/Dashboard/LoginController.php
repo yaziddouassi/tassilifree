@@ -22,6 +22,11 @@ class LoginController extends Controller
    public   $urlToRedirect = '/admin' ;
    public   $urlValidation = '/admin/login/validate' ;
 
+    public function __construct()
+    {
+        config(['inertia.ssr.enabled' => false]); // desactivate ssr
+    }
+
    #[Post('admin/login/validate')]
    public function validate(Request $request)
     {

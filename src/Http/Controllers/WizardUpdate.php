@@ -40,6 +40,7 @@ class WizardUpdate extends Controller
 
     function __construct() {
 
+        config(['inertia.ssr.enabled' => false]);
         $this->tassiliSettings['tassiliDataModelLabel'] =  $this->tassiliDataModelLabel ;
         $this->tassiliSettings['tassiliDataModelTitle'] =  $this->tassiliDataModelTitle ;
         $this->tassiliSettings['tassiliDataRouteListe'] =  $this->tassiliDataRouteListe ;

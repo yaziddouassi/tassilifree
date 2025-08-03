@@ -30,6 +30,8 @@ class TassiliCreate extends Controller
 
     function __construct() {
 
+        config(['inertia.ssr.enabled' => false]);
+
         $this->tassiliSettings['tassiliShowOther'] = $this->tassiliShowOther ;
         $this->tassiliSettings['tassiliDataModelLabel'] =  $this->tassiliDataModelLabel ;
         $this->tassiliSettings['tassiliDataModelTitle'] =  $this->tassiliDataModelTitle ;

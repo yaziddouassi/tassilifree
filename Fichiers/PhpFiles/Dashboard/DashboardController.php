@@ -19,6 +19,11 @@ class DashboardController extends Controller
 
    public   $tassiliPanel = 'admin' ;
 
+   public function __construct()
+    {
+        config(['inertia.ssr.enabled' => false]); // desactivate ssr
+    }
+
    #[Get('admin',middleware : ['tassili.auth'])]
     public function index(Request $request)
     {
