@@ -56,8 +56,8 @@ class WizardUpdate extends Controller
      public function form(array $fields)
     {
     foreach ($fields as $field) {
-
-         $field->registerTo($this);   
+        
+         $field->updateTo($this);
     }
 
     return $this ;
