@@ -13,7 +13,7 @@ export function updatorService() {
 
    tassiliroutes.setRoutes(page.props.routes)
    tassiliInput.form = page.props.tassiliFields
-
+   tassiliInput.isAnimated = 'off'
 
     let currentRoute = tassiliroutes.routes.find(item => item.model === page.props.tassiliSettings.tassiliModelClassName)?.route;
    if(currentRoute == undefined) {
@@ -53,9 +53,11 @@ function checkNullable() {
 
 function update() {
 
+tassiliInput.isAnimated = 'on'
 const temoin = checkNullable();
 
 if (temoin > 0) {
+  tassiliInput.isAnimated = 'off'
   const notyf = new Notyf({ position: { x: 'right', y: 'top' } });
   notyf.error(`${temoin} fields(s) required are missing(s).`);
   return;
@@ -138,11 +140,12 @@ if (tassiliInput.form[key]['type'] === 'Repeater' ) {
 router.post(page.props.tassiliSettings.tassiliValidationUrl, formData, {
     forceFormData: true,
     onError: (errors) => {
+      tassiliInput.isAnimated = 'off'
       tassiliInput.setError(errors);
       console.error('Validation Errors:', tassiliInput.errors);
     },
     onSuccess: () => {
-
+      tassiliInput.isAnimated = 'off'
       const notyf = new Notyf({ position: { x: 'right', y: 'top' } });
       notyf.success('Record Updated');
 
