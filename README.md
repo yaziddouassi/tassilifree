@@ -189,9 +189,29 @@ $middleware->alias([
 
 ---
 
+### 7. Update AppServiceProvider
 
+In your `app/Providers/AppServiceProvider.php`, add:
 
-### 7. Create Admin User
+```php
+use Illuminate\Support\Facades\Route;
+use Spatie\RouteAttributes\RouteRegistrar;
+use Spatie\RouteAttributes\RouteFileRegistrar;
+
+ public function boot(): void
+    {
+        (new RouteRegistrar(Route::getFacadeRoot()))
+    ->useRootNamespace('App\\Http\\Controllers') 
+    ->useBasePath(app_path('Http/Controllers'))
+    ->useMiddleware(['web'])
+    ->registerDirectory(app_path('Http/Controllers'));
+
+    }
+
+```
+---
+
+### 8. Create Admin User
 
 ```bash
 php artisan make:tassili-user
@@ -220,4 +240,4 @@ This project is licensed under a commercial license via [Gumroad](https://yazid4
 
 ---
 
-**Crafted with ❤️ by [Your Name or Brand]**
+**Crafted with ❤️ by [LH DIGITAL]**
