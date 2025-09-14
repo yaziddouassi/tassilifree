@@ -100,6 +100,7 @@ public function createRecord(Request $request) {
 
                 elseif (in_array($this->tassiliFields[$key]['type'], $this->arrayTypes9)) {
     $cleanedRepeater = [];
+    $tabTemp = ['Text','Date','Number','Hidden','Select','Radio','Textarea','Quill'];
 
     foreach ($value as $repeaterItem) {
         $cleanedItem = [];
@@ -111,8 +112,11 @@ public function createRecord(Request $request) {
                 // ✅ NE PAS utiliser json_encode ici
                 $cleanedItem[$subKey] = is_array($subValue) ? $subValue : explode(',', $subValue);
             }
-            else {
+            else if (in_array($subType, $tabTemp)) {
                 $cleanedItem[$subKey] = $subValue;
+                if($subValue === null) {
+                    $cleanedItem[$subKey] = '';
+                }
             }
 
 
