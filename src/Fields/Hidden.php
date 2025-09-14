@@ -45,6 +45,36 @@ class Hidden
         $this->registerTo($generator);
     }
 
+    public function repeteurTo($generator , $field): void
+    {
+
+        $generator->tassiliFields[$field]['fields'][$this->field]['field'] = $this->field;
+        $generator->tassiliFields[$field]['fields'][$this->field]['type'] = $this->type;
+        $generator->tassiliFields[$field]['fields'][$this->field]['value'] = $this->defaultValue;
+        $generator->tassiliFields[$field]['fields'][$this->field]['options']['defaultValue'] = $this->defaultValue;
+        $generator->tassiliFields[$field]['fields'][$this->field]['options']['noDatabase'] = $this->noDatabase;
+
+        $generator->tassiliFields[$field]['schemaFields'][$this->field] = $this->defaultValue;
+
+
+        $generator->tassiliFields[$field]['value'] = [] ;
+
+                  for ($i=0; $i < $generator->tassiliFields[$field]['numberOflines'] ; $i++) { 
+             
+                    array_push($generator->tassiliFields[$field]['value'], $generator->tassiliFields[$field]['schemaFields']);
+  
+                }
+
+    }
+
+
+      public function repeteurToUpdate($generator , $field): void
+    {
+      $this->repeteurTo($generator , $field);
+  
+    } 
+
+
      public function registerToCustomAction($generator): void
     {
 
