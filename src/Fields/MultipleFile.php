@@ -10,7 +10,7 @@ class MultipleFile
     protected $noDatabase = 'no';
     protected $nullable = 'no';
     protected $noTouchable = 'no';
-    protected $maxNumberFiles = 3;
+    protected $maxNumberFiles = 100000000000;
 
     public static function make(string $field): self
     {
