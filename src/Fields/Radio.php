@@ -10,7 +10,8 @@ class Radio
     protected $noDatabase = 'no';
     protected $contents = [];
     protected $labels = [];
-    
+    protected $readOnly = 'no';
+
     public static function make(string $field): self
     {
         $instance = new self();
@@ -51,6 +52,12 @@ class Radio
         return $this;
     }
 
+      public function readOnly(): self
+    {
+        $this->readOnly = 'yes';
+        return $this;
+    }
+
     public function registerTo($generator): void
     {
 
@@ -72,6 +79,7 @@ class Radio
         $generator->tassiliFields[$this->field]['options']['noDatabase'] = $this->noDatabase;
         $generator->tassiliFields[$this->field]['options']['contents'] = $this->contents;
         $generator->tassiliFields[$this->field]['options']['labels'] = $this->labels;
+        $generator->tassiliFields[$this->field]['options']['readOnly'] = $this->readOnly;
     }
 
     
@@ -94,6 +102,7 @@ class Radio
 
           $this->defaultValue = (string) $this->defaultValue ;
 
+
         $generator->tassiliFields[$field]['fields'][$this->field]['field'] = $this->field;
         $generator->tassiliFields[$field]['fields'][$this->field]['type'] = $this->type;
         $generator->tassiliFields[$field]['fields'][$this->field]['value'] = $this->defaultValue;
@@ -102,6 +111,12 @@ class Radio
         $generator->tassiliFields[$field]['fields'][$this->field]['options']['noDatabase'] = $this->noDatabase;
         $generator->tassiliFields[$field]['fields'][$this->field]['options']['contents'] = $this->contents;
         $generator->tassiliFields[$field]['fields'][$this->field]['options']['labels'] = $this->labels;
+
+        $generator->tassiliFields[$field]['fields'][$this->field]['options']['readOnly'] = $this->readOnly;
+
+        if($generator->tassiliFields[$field]['options']['readOnly'] === 'yes') {
+        $generator->tassiliFields[$field]['fields'][$this->field]['options']['readOnly'] = 'yes' ;  
+        }
 
         $generator->tassiliFields[$field]['schemaFields'][$this->field] = $this->defaultValue;
 
@@ -127,7 +142,6 @@ class Radio
 
      public function registerToCustomAction($generator): void
     {
-
         foreach ($this->contents as $key => $value) {
           $this->contents[$key] = (string) $this->contents[$key] ;
         }
@@ -146,14 +160,15 @@ class Radio
         $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$this->field]['options']['noDatabase'] = $this->noDatabase;
         $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$this->field]['options']['contents'] = $this->contents;
         $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$this->field]['options']['labels'] = $this->labels;
-
+        $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$this->field]['options']['readOnly'] = $this->readOnly;
     }   
 
 
    
      public function repeteurToCustomAction($generator , $field) {
 
-     foreach ($this->contents as $key => $value) {
+
+        foreach ($this->contents as $key => $value) {
           $this->contents[$key] = (string) $this->contents[$key] ;
         }
 
@@ -163,6 +178,7 @@ class Radio
 
           $this->defaultValue = (string) $this->defaultValue ;
 
+
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['field'] = $this->field;
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['type'] = $this->type;
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['value'] = $this->defaultValue;
@@ -171,6 +187,10 @@ class Radio
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['options']['noDatabase'] = $this->noDatabase ;
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['options']['contents'] = $this->contents ;
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['options']['labels'] = $this->labels ;
+    $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['options']['readOnly'] = $this->readOnly ;
+    if($generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['options']['readOnly'] === 'yes') {
+      $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['options']['readOnly'] = 'yes' ;
+    }
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['schemaFields'][$this->field] = $this->defaultValue;
 
 

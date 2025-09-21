@@ -81,12 +81,12 @@ class TassiliUpdate extends Controller
 
 
 
-public function updateRecord(Request $request) {
+     public function updateRecord(Request $request) {
 
        foreach ($request->all() as $key => $value) {
 
          if (array_key_exists($key, $this->tassiliFields)) {
-            if($this->tassiliFields[$key]&&  $this->tassiliFields[$key]['options']['noDatabase'] == 'no' ) {
+            if($this->tassiliFields[$key] &&  $this->tassiliFields[$key]['options']['noDatabase'] == 'no' ) {
 
                if (in_array($this->tassiliFields[$key]['type'], $this->arrayTypes1) || 
                     in_array($this->tassiliFields[$key]['type'], $this->arrayTypes2)  ) 
@@ -120,8 +120,7 @@ public function updateRecord(Request $request) {
 
                   elseif (in_array($this->tassiliFields[$key]['type'], $this->arrayTypes9)) {
     $cleanedRepeater = [];
-    $tabTemp = ['Text','Date','Number','Hidden','Select','Radio','Textarea','Quill'];
-
+    $tabTemp = ['Text','Date','Number','Hidden','Select','Radio','Textarea','Quill'] ;
     foreach ($value as $repeaterItem) {
         $cleanedItem = [];
 
@@ -151,12 +150,14 @@ public function updateRecord(Request $request) {
 
 
           if (in_array($this->tassiliFields[$key]['type'], $this->arrayTypes4)) {
-                    // Handle single file uploads
+                    $dossier = $this->tassiliFields[$key]['options']['storage_folder'];
+                    $dossierStorage = 'uploads/' . $dossier ;
+
                     if ($request->hasFile($key)) {
                         $file = $request->file($key);
                         $uniqueName = Str::uuid() . '.' . $file->getClientOriginalName();
-                        $file->storeAs('uploads', $uniqueName, config('tassili.storage_disk'));
-                        $path = 'uploads/' . $uniqueName ;
+                        $file->storeAs($dossierStorage, $uniqueName, config('tassili.storage_disk'));
+                        $path =  $dossierStorage . '/' . $uniqueName;
                         $this->tassiliRecord[$key] = $path;
                     }
                 }  
@@ -164,12 +165,14 @@ public function updateRecord(Request $request) {
 
             elseif (in_array($this->tassiliFields[$key]['type'], $this->arrayTypes5)) { 
                  $tab1 = json_decode($request->input($key . '_newtab')) ;
+                 $dossier = $this->tassiliFields[$key]['options']['storage_folder'];
+                 $dossierStorage = 'uploads/' . $dossier ;
 
                  if($value) {
                     foreach ($value as $file) {
                       
                         $uniqueName = Str::uuid() . '.' . $file->getClientOriginalName();
-                        $path = $file->storeAs('uploads', $uniqueName, config('tassili.storage_disk'));
+                        $path = $file->storeAs($dossierStorage, $uniqueName, config('tassili.storage_disk'));
                         array_push($tab1, $path);
                     }
                  }
@@ -188,6 +191,7 @@ public function updateRecord(Request $request) {
        }
 
     }
+
 
 
 

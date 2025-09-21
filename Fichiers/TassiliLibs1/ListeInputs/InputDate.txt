@@ -6,7 +6,8 @@
      
      <div>
         <input class="w-full  bg-[#555] text-white h-[50px]
-      border-[white] border-[1px] "
+      border-[#666] border-[1px] "
+         :readonly="tassiliInput.form[props.cle]['options']['readOnly'] ==='yes'"
          type="date" v-model="tassiliInput.form[props.cle]['value']"
          :min="tassiliInput.form[props.cle]['options'].min !== 'infinite' ?
                  tassiliInput.form[props.cle]['options'].min : null"
