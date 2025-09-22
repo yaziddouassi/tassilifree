@@ -128,9 +128,6 @@ class TextInput
       $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['fields'][$this->field]['options']['readOnly'] = 'yes' ;
     }
 
-    $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['options']['readOnly'] = $this->readOnly ;
-
-
     $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['value'] = [] ;
 
                   for ($i=0; $i < $generator->tassiliFormList[$generator->customActionUrlTemoin]['fields'][$field]['numberOflines'] ; $i++) { 
