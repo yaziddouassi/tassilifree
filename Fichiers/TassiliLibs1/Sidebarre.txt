@@ -104,7 +104,7 @@ function resetSession() {
 
   if (confirm('Do you want reset session ?')) {
     localStorage.removeItem('tassili')
-    hoggarinfo.setRoutes(page.props.routes)
+    tassiliroutes.setRoutes(page.props.routes)
     router.get('/admin',{} ,{
       preserveScroll: false,
     })

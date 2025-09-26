@@ -114,7 +114,8 @@ import WizardStep from './WizardStep.vue';
 import { usePage } from '@inertiajs/vue3'
 import { router } from '@inertiajs/vue3';
 import LoadAction from '../LoadAction.vue';
-
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
 const page = usePage()
 const tassiliInput = TassiliInput();
