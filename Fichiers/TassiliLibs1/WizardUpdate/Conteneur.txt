@@ -20,6 +20,7 @@
       <RichEditor v-else-if="field.type === 'Quill'" :cle="key" />
       <InputFileEdit v-else-if="field.type === 'FileEdit'" :cle="key" />
       <Repeteur v-else-if="field.type === 'Repeater'" :cle="key" />
+      <Signature v-if="field.type === 'Signature'" :cle="key" />
       <MultipleFileEdit v-else-if="field.type === 'MultipleFileEdit'" :cle="key" />
     </div>
   </div>
@@ -39,6 +40,7 @@ import CheckboxList from '../Inputs/CheckboxList.vue';
 import RichEditor from '../Inputs/RichEditor.vue';
 import InputFileEdit from '../Inputs/InputFileEdit.vue';
 import MultipleFileEdit from '../Inputs/MultipleFileEdit.vue';
+import Signature from '../Inputs/Signature.vue';
 import Repeteur from '../Inputs/Repeteur.vue';
 
 
