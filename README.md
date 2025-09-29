@@ -21,6 +21,8 @@
 npm install quill@^2.0.3
 npm install vue-chartjs chart.js
 npm install pinia
+npm install notyf
+npm install material-icons
 composer require spatie/laravel-route-attributes
 ```
 
@@ -31,6 +33,7 @@ composer require spatie/laravel-route-attributes
 ```js
 import '../css/app.css';
 import './bootstrap';
+import 'material-icons/iconfont/material-icons.css';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -65,6 +68,7 @@ createInertiaApp({
 ```js
 import '../css/app.css';
 import './bootstrap';
+import 'material-icons/iconfont/material-icons.css';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -94,69 +98,7 @@ createInertiaApp({
 
 ---
 
-### 3. Update Blade Template if you are not using typescript
-
-Update your `resources/views/app.blade.php`:
-
-```blade
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title inertia>{{ config('app.name', 'Laravel') }}</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="preconnect" href="https://fonts.bunny.net">
-  <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet">
-
-  @routes
-  @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
-  @inertiaHead
-</head>
-<body class="font-sans antialiased">
-  @inertia
-</body>
-</html>
-```
-
----
-
-### 3-b. Update Blade Template if you are using typescript
-
-Update your `resources/views/app.blade.php`:
-
-```blade
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title inertia>{{ config('app.name', 'Laravel') }}</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet">
-
-    @routes
-    @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
-    @inertiaHead
-</head>
-<body class="font-sans antialiased">
-    @inertia
-</body>
-</html>
-```
-
----
-
-### 4. Storage Configuration (example for `public` disk)
+### 3. Storage Configuration (example for `public` disk)
 
 ```env
 TASSILI_STORAGE_DISK=public
@@ -165,7 +107,7 @@ TASSILI_STORAGE_URL=http://127.0.0.1:8000/storage/
 
 ---
 
-### 5. Install Tassili
+### 4. Install Tassili
 
 ```bash
 composer require tassili/free
@@ -177,7 +119,7 @@ php artisan storage:link
 
 ---
 
-### 6. Register Tassili Middleware
+### 5. Register Tassili Middleware
 
 In your `bootstrap/app.php`, add:
 
@@ -189,7 +131,7 @@ $middleware->alias([
 
 ---
 
-### 7. Update AppServiceProvider
+### 6. Update AppServiceProvider
 
 In your `app/Providers/AppServiceProvider.php`, add:
 
@@ -211,7 +153,7 @@ use Spatie\RouteAttributes\RouteFileRegistrar;
 ```
 ---
 
-### 8. Create Admin User
+### 7. Create Admin User
 
 ```bash
 php artisan make:tassili-user
