@@ -17,67 +17,72 @@ public function getPiece1($a,$b,$c) {
 
 namespace App\Http\Controllers\Tassili\Admin\Crud\\$a;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
 use Tassili\Free\Http\Controllers\TassiliCreate;
 use Tassili\Free\Fields\TextInput;
+use App\Http\Controllers\Controller;
 
 
-class CreatorController extends TassiliCreate
+class CreatorController extends Controller
 {
-    public   \$tassiliShowOther = true ;
-    public   \$tassiliDataModelLabel = '$b' ;
-    public   \$tassiliDataModelTitle = 'Create $b' ;
-    public   \$tassiliDataRouteListe = '/admin/$c';
-    public   \$tassiliModelClass = 'App\Models\\$a';
-    public   \$tassiliModelClassName = '$a';
-    public   \$tassiliDataUrlCreate = '/admin/$c/create' ;
-    public   \$tassiliValidationUrl = '/admin/$c/create/validation' ;
+   
+    private string  \$tassiliModelClass = 'App\Models\\$a';
+    private TassiliCreate \$tassili;
 
-
-
-    public function initField()
-    {  
-          \$this->form([
-            TextInput::make('name')
+     public function __construct()
+    {
+        \$this->tassili = new TassiliCreate([
+            'tassiliShowOther' => true,
+            'tassiliDataModelLabel' => '$b',
+            'tassiliDataModelTitle' => 'Create $b',
+            'tassiliDataRouteListe' => '/admin/$c',
+            'tassiliDataUrlCreate' => '/admin/$c/create',
+            'tassiliModelClass' => \$this->tassiliModelClass,
+            'tassiliModelClassName' => '$a',
+            'tassiliValidationUrl' => '/admin/$c/create/validation',
         ]);
+
+        \$this->initField();
     }
 
 
-    #[Post('admin/$c/create/validation',middleware : ['tassili.auth'])]
+     public function initField()
+    {
+        \$this->tassili->form([
+            TextInput::make('name'),
+        ]);
+    }
+
+    #[Post('admin/$c/create/validation', middleware: ['tassili.auth'])]
     public function create(Request \$request)
     {
-
-       \$request->validate([
-          'name' => ['required'],
+        \$request->validate([
+            'name' => ['required'],
         ]);
-       
-        \$this->tassiliRecord = new \$this->tassiliModelClass;
-        \$this->createRecord(\$request);
-        \$this->tassiliRecord->save() ; 
+
+        \$this->tassili->tassiliRecord = new \$this->tassiliModelClass;
+        \$this->tassili->createRecord(\$request);
+        \$this->tassili->tassiliRecord->save();
+    }
+
+    #[Get('admin/$c/create', middleware: ['tassili.auth'])]
+    public function index(Request \$request)
+    {
+        return Inertia::render('TassiliPages/Admin/Crud/$a/Creator', [
+            'user' => Auth::user(),
+            'routes' => \Tassili\Free\Models\TassiliCrud::where('active', true)->get(),
+            'tassiliSettings' => \$this->tassili->tassiliSettings,
+            'tassiliFields' => \$this->tassili->tassiliFields,
+            'tassiliUrlStorage' => config('tassili.storage_url'),
+        ]);
     }
     
 
-    #[Get('admin/$c/create',middleware : ['tassili.auth'])]
-    public function index(Request \$request)
-    {
- 
-        return Inertia::render('TassiliPages/Admin/Crud/$a/Creator',
-        [
-          'user' => \Illuminate\Support\Facades\Auth::user(),
-          'routes' =>  \Tassili\Free\Models\TassiliCrud::where('active',true)->get(),
-          'tassiliSettings'  => \$this->tassiliSettings,
-          'tassiliFields' => \$this->tassiliFields ,
-          'tassiliUrlStorage' => config('tassili.storage_url') ,
-        ]
-    );
-    }
+   
 
 }
     ";
@@ -92,85 +97,81 @@ class CreatorController extends TassiliCreate
 
 namespace App\Http\Controllers\Tassili\Admin\Crud\\$a;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
 use Tassili\Free\Http\Controllers\TassiliUpdate;
 use Tassili\Free\Fields\TextInput;
+use App\Http\Controllers\Controller;
 
-
-class UpdatorController extends TassiliUpdate
+class UpdatorController extends Controller
 {
     
-    public   \$tassiliDataModelLabel = '$b' ;
-    public   \$tassiliDataModelTitle = 'Update $b' ;
-    public   \$tassiliDataRouteListe = '/admin/$c';
-    public   \$tassiliModelClass = 'App\Models\\$a';
-    public   \$tassiliModelClassName = '$a';
-    public   \$tassiliDataUrlCreate = '/admin/$c/create' ;
-    public   \$tassiliValidationUrl = '/admin/$c/updator/validation' ;
+    private string  \$tassiliModelClass = 'App\Models\\$a';
+    private TassiliUpdate \$tassili;
 
+     public function __construct()
+    {
+        \$this->tassili = new TassiliUpdate([
+            'tassiliDataModelLabel' => '$b',
+            'tassiliDataModelTitle' => 'Create $b',
+            'tassiliDataRouteListe' => '/admin/$c',
+            'tassiliDataUrlCreate' => '/admin/$c/create',
+            'tassiliModelClass' => \$this->tassiliModelClass,
+            'tassiliModelClassName' => '$a',
+            'tassiliValidationUrl' => '/admin/$c/create/validation',
+        ]);
 
+        \$this->initField();
+    }
+
+     
     public function initField()
     {
-
-        \$this->form([
-            TextInput::make('name')
+        \$this->tassili->form([
+            TextInput::make('name'),
         ]);
-  
     }
 
-
-    #[Post('admin/$c/updator/validation',middleware : ['tassili.auth'])]
+    #[Post('admin/$c/updator/validation', middleware: ['tassili.auth'])]
     public function update(Request \$request)
     {
-
-
-      
         \$request->validate([
-          'name' => ['required'],
+            'name' => ['required'],
         ]);
 
-         \$this->tassiliRecord = \$this->tassiliModelClass::find(\$request->id);
-       
-         
-         if (\$this->tassiliRecord != null) {
-             \$this->updateRecord(\$request);
-            \$this->tassiliRecord->save() ; 
-         }
+        \$this->tassili->tassiliRecord = \$this->tassiliModelClass::find(\$request->id);
 
+        if (\$this->tassili->tassiliRecord !== null) {
+            \$this->tassili->updateRecord(\$request);
+            \$this->tassili->tassiliRecord->save();
+        }
     }
 
-
-    #[Get('admin/$c/update/{id}',middleware : ['tassili.auth'])]
+    #[Get('admin/$c/update/{id}', middleware: ['tassili.auth'])]
     public function index(Request \$request)
     {
+        \$redirect = \$this->tassili->checkRecord(\$request);
 
-        \$redirect = \$this->checkRecord(\$request);
-
-         if (\$redirect) {
-             return \$redirect; // Ensure redirection is returned
+        if (\$redirect) {
+            return \$redirect;
         }
 
-         \$this->initFieldAgain(\$request) ;
+        \$this->tassili->initFieldAgain(\$request);
 
-        return Inertia::render('TassiliPages/Admin/Crud/$a/Updator',
-        [
-          'user' => \Illuminate\Support\Facades\Auth::user(),
-          'routes' =>  \Tassili\Free\Models\TassiliCrud::where('active',true)->get(),
-          'tassiliSettings'  => \$this->tassiliSettings,
-          'tassiliFields' => \$this->tassiliFields ,
-          'tassiliRecordInput' =>  \$this->tassiliRecordInput,
-          'tassiliUrlStorage' => config('tassili.storage_url') ,
-        ]
-    );
+        return Inertia::render('TassiliPages/Admin/Crud/$a/Updator', [
+            'user' => Auth::user(),
+            'routes' => \Tassili\Free\Models\TassiliCrud::where('active', true)->get(),
+            'tassiliSettings' => \$this->tassili->tassiliSettings,
+            'tassiliFields' => \$this->tassili->tassiliFields,
+            'tassiliRecordInput' => \$this->tassili->tassiliRecordInput,
+            'tassiliUrlStorage' => config('tassili.storage_url'),
+        ]);
     }
-    
+
+   
     
 }
 
@@ -187,145 +188,130 @@ class UpdatorController extends TassiliUpdate
 
 namespace App\Http\Controllers\Tassili\Admin\Crud\\$a;
 
-use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-use Inertia\Response;
 use Spatie\RouteAttributes\Attributes\Get;
 use Spatie\RouteAttributes\Attributes\Post;
-use Tassili\Free\Http\Controllers\Listing;
+use Tassili\Free\Http\Controllers\ListingUtility;
 use Tassili\Free\Fields\TextInput;
 use Tassili\Free\Filters\FilterText;
-use Tassili\Free\Actions\Action ;
+use Tassili\Free\Actions\Action;
 
-class ListingController extends Listing
+class ListingController extends Controller
 {
     
-    public   \$tassiliDataModelLabel = '$b' ;
-    public   \$tassiliDataModelTitle = 'Create $b' ;
-    public   \$tassiliDataRouteListe = '/admin/$c';
-    public   \$tassiliModelClass = 'App\Models\\$a';
-    public   \$tassiliModelClassName = '$a';
-    public   \$tassiliDataUrlCreate = '/admin/$c/create' ;
-    public   \$tassiliDataUrlCheckRecord = '/admin/$c/checkRecord' ;
-    public   \$urlDelete = '/admin/$c/delete';
-    public   \$paginationPerPageList = [10,20,30,40,50] ;
-    public   \$orderByFieldList = ['id'] ;
-    public   \$orderDirectionList = ['asc','desc'] ;
-    public   \$sessionFilter = ['search',/*'paginationPerPage','orderByField','orderDirection' */] ;
-
-    public function customFilterList(Request \$request)
-        {
-           
-           \$this->filterList([
-                FilterText::make('name'),
-                FilterText::make('ville'),
-           ]
-        );
-            
-        }
-
-    public function initQuery(Request \$request) {
-            if (\$request->filled('name')) {
-            //    \$this->queryFilter = \$this->queryFilter->where('name',\$request->name);
-            }
-            }
-  
+    private string \$modelClass = 'App\Models\\$a';
+    private ListingUtility \$utility;
     
-    public function initAction(Request \$request)
-        {
-            \$this->ActionList([
-               Action::make('action1')
-                 ->params([
+    public function __construct(Request \$request)
+    {
+        // Initialisation de la classe utilitaire avec les paramètres
+        \$this->utility = new ListingUtility([
+            'tassiliDataModelLabel' => '$b',
+            'tassiliDataModelTitle' => 'Create $b',
+            'tassiliDataRouteListe' => '/admin/$c',
+            'tassiliDataUrlCreate' => '/admin/$c/create',
+            'tassiliModelClass' => \$this->modelClass,
+            'tassiliModelClassName' => '$a',
+            'paginationPerPageList' => [10, 20, 30, 40, 50],
+            'orderByFieldList' => ['id'],
+            'orderDirectionList' => ['asc', 'desc'],
+            'urlDelete' => '/admin/$c/delete',
+        ]);
+
+        \$this->customFilterList();
+        \$this->initAction();
+        \$this->initCustom();
+    }
+
+
+     private function customFilterList(): void
+    {
+        \$this->utility->filterList([
+            FilterText::make('name'),
+            FilterText::make('ville'),
+        ]);
+    }
+
+
+    private function initAction(): void
+    {
+        \$this->utility->ActionList([
+            Action::make('action1')
+                ->params([
                     'label' => 'Ajouter',
                     'icon' => 'description',
                     'class' => 'text-white',
-                    'url' => '/admin/$c/action1',
-                    'confirmation' => 'voulez-vous Ajouter ces records',
-                    'message' => 'records ajoutés'
-                 ])
-            ]);
-        }
-
-     #[Post('admin/$c/action1',middleware : ['tassili.auth'])]
-    public function action1(Request \$request)
-        {  
-
-        \$this->tassiliModelClass::whereIn('id',\$request->actionIds )->update([
-                'name' => 'Fiat',
-            ]);
-
-        }
-    
-
-    public function initCustom(Request \$request)
-        {
-
-            \$this->CustomActionForm([
-               'url' => '/admin/$c/custom1',
-               'icon' => 'edit',
-               'text' => 'Qte',
-               'class' => 'text-white',
-               'confirm' => 'Are you sure you want delete?',
-           ])->form([
-               TextInput::make('name')
-          ]);
-
-
-        }
-
-    
-
-    #[Post('admin/$c/custom1',middleware : ['tassili.auth'])]
-    public function custom1(Request \$request)
-        {  
-
-        \$request->validate(['name' => ['required']]);
-
-        \$this->tassiliRecord = \$this->tassiliModelClass::find(\$request->id);
-       
-         
-         if (\$this->tassiliRecord != null) {
-             \$this->updateRecord(\$request);
-             \$this->tassiliRecord->save() ; 
-         }
-
-        } 
-    
-        
-    
-    #[Post('admin/$c/delete',middleware : ['tassili.auth'])]
-    public function delete(Request \$request)
-        {  
-            \$this->tassiliModelClass::destroy(\$request->id);
-        } 
-
-
-    #[Get('admin/$c',middleware : ['tassili.auth'])]
-    public function index(Request \$request)
-    {
-
-        \$this->allInit(\$request);
-        
-        return Inertia::render('TassiliPages/Admin/Crud/$a/Listing',
-        [
-          'items' => \$this->tables,
-          'user' => \Illuminate\Support\Facades\Auth::user(),
-          'routes' =>  \Tassili\Free\Models\TassiliCrud::where('active',true)->get(),
-          'tassiliSettings'  => \$this->tassiliSettings,
-          'allFilters' => \$this->allFilters,
-          'customFilters' => \$this->customFilters,
-          'sessionFilter' => \$this->sessionFilter,
-          'groupActions' =>  \$this->groupActions ,
-          'tassiliDataUrlCheckRecord' => \$this->tassiliDataUrlCheckRecord,
-          'tassiliFormList' => \$this->tassiliFormList,
-          'tassiliUrlStorage' => config('tassili.storage_url') ,
-        ]
-    );
+                    'url' =>'/admin/$c/action1' ,
+                    'confirmation' => 'Are you sure to change records',
+                    'message' => 'Records changed'
+                ])
+        ]);
     }
 
+     private function initCustom(): void
+    {
+        \$this->utility->CustomActionForm([
+            'url' => '/admin/$c/custom1',
+            'icon' => 'edit',
+            'text' => 'Qte',
+            'class' => 'text-white',
+            'confirm' => 'Are you sure to change record?',
+        ])->form([
+            TextInput::make('name')
+        ]);
+    }
+
+
+     private function initQuery(\$query, Request \$request): void
+    {
+        if (\$request->filled('name')) {
+             \$query->where('name', \$request->name);
+        }
+    }
+
+      #[Post('admin/$c/action1', middleware: ['tassili.auth'])]
+    public function action1(Request \$request)
+    {
+        \$this->modelClass::whereIn('id', \$request->actionIds)->update([
+            'name' => 'Fiat',
+        ]);
+    }
+
+     #[Post('admin/$c/custom1', middleware: ['tassili.auth'])]
+    public function custom1(Request \$request)
+    {
+        \$request->validate(['name' => ['required']]);
+
+        \$this->utility->tassiliRecord = \$this->modelClass::find(\$request->id);
+
+        if (\$this->utility->tassiliRecord !== null) {
+            \$this->utility->updateRecord(\$request);
+            \$this->utility->tassiliRecord->save();
+        }
+    }
+
+    
+    #[Post('admin/$c/delete', middleware: ['tassili.auth'])]
+    public function delete(Request \$request)
+    {
+        \$this->modelClass::destroy(\$request->id);
+    }
+        
+     #[Get('admin/$c', middleware: ['tassili.auth'])]
+    public function index(Request \$request)
+    {
+        \$this->utility->initializeQuery(
+            \$this->modelClass,\$request,fn(\$query, \$req) => \$this->initQuery(\$query, \$req)
+        );
+        \$data = \$this->utility->getInertiaData();
+        \$data['sessionFilter'] = [/*'search','orderByField','orderDirection','paginationPerPage'*/];
+
+        return Inertia::render('TassiliPages/Admin/Crud/$a/Listing', \$data);
+    }
+   
+  
 
     
     
