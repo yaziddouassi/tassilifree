@@ -116,12 +116,12 @@ class UpdatorController extends Controller
     {
         \$this->tassili = new TassiliUpdate([
             'tassiliDataModelLabel' => '$b',
-            'tassiliDataModelTitle' => 'Create $b',
+            'tassiliDataModelTitle' => 'Update $b',
             'tassiliDataRouteListe' => '/admin/$c',
             'tassiliDataUrlCreate' => '/admin/$c/create',
             'tassiliModelClass' => \$this->tassiliModelClass,
             'tassiliModelClassName' => '$a',
-            'tassiliValidationUrl' => '/admin/$c/create/validation',
+            'tassiliValidationUrl' => '/admin/$c/updator/validation',
         ]);
 
         \$this->initField();
