@@ -128,4 +128,28 @@ class WizardCreate
         $this->tassiliWizardInfo = $wizard;
         return $this;
     }
+
+    
+     public function getInertiaData(): array
+    {
+        return [
+
+            'user' => \Illuminate\Support\Facades\Auth::user(),
+            'routes' => \Tassili\Free\Models\TassiliCrud::where('active', true)->get(),
+            'tassiliUrlStorage' => config('tassili.storage_url'),
+
+            'tassiliFields' => $this->tassiliFields,
+            'tassiliWizardInfo' => $this->tassiliWizardInfo,
+            'tassiliShowOther' => $this->tassiliSettings['tassiliShowOther'],
+            'tassiliDataModelLabel' => $this->tassiliSettings['tassiliDataModelLabel'],
+            'tassiliDataModelTitle' => $this->tassiliSettings['tassiliDataModelTitle'],
+            'tassiliDataRouteListe' => $this->tassiliSettings['tassiliDataRouteListe'],
+            'tassiliDataUrlCreate' => $this->tassiliSettings['tassiliDataUrlCreate'],
+            'tassiliModelClass' => $this->tassiliSettings['tassiliModelClass'],
+            'tassiliModelClassName' => $this->tassiliSettings['tassiliModelClassName'],
+            'tassiliValidationUrl' => $this->tassiliSettings['tassiliValidationUrl'],
+            
+        ];
+    }
+
 }

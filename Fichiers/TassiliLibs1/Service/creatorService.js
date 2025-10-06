@@ -14,9 +14,9 @@ export function creatorService() {
   function initForm() {
  
 
-   tassiliroutes.setRoutes(page.props.routes)
-   tassiliInput.form = page.props.tassiliFields
-   tassiliInput.formStart = JSON.parse(JSON.stringify(page.props.tassiliFields))
+   tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
+   tassiliInput.form = page.props.tassiliSettings.tassiliFields
+   tassiliInput.formStart = JSON.parse(JSON.stringify(page.props.tassiliSettings.tassiliFields))
    tassiliInput.isAnimated = 'off'
 
    let currentRoute = tassiliroutes.routes.find(item => item.model === page.props.tassiliSettings.tassiliModelClassName)?.route;

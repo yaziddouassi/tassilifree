@@ -38,7 +38,7 @@
           
 
           <div class="p-[4px] bg-[blue] text-center border-[1px] font-bold border-white text-[22px] rounded-[2px] mb-[10px]">
-                 <Link :href="`/${page.props.tassiliPanel}`">DASHBOARD</Link>
+                 <Link :href="`/${page.props.tassiliSettings.tassiliPanel}`">DASHBOARD</Link>
           </div>
 
           
@@ -118,7 +118,7 @@
             </div>
             <div class="pl-[5px]">
             <span>
-               {{ page.props.user.name }}
+               {{ page.props.tassiliSettings.user.name }}
              </span>
            </div>
         </div>
@@ -178,7 +178,7 @@ function resetSession() {
 
   if (confirm('Do you want reset session ?')) {
     localStorage.removeItem('tassili')
-    hoggarinfo.setRoutes(page.props.routes)
+    hoggarinfo.setRoutes(page.props.tassiliSettings.routes)
     router.get('/admin',{} ,{
       preserveScroll: false,
     })

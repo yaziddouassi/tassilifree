@@ -61,7 +61,7 @@
     tassililisting.show2 = false
 
     const tassili = JSON.parse(localStorage.getItem(panelStorage))
-    const isValue = Object.values(page.props.sessionFilter).includes(props.cle)
+    const isValue = Object.values(page.props.tassiliSettings.sessionFilter).includes(props.cle)
   
     if (myInput.value !== '') {
       if (isValue) {
@@ -72,7 +72,7 @@
   
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
 
-      tassiliroutes.setRoutes(page.props.routes)
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
   
       const url = new URL(window.location.href)
       const params = new URLSearchParams(url.search)
@@ -88,7 +88,7 @@
     } else {
       delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes)
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
 
       const url = new URL(window.location.href)
       const params = new URLSearchParams(url.search)
@@ -107,13 +107,13 @@
    
   
     const tassili = JSON.parse(localStorage.getItem(panelStorage))
-    const isValue = Object.values(page.props.sessionFilter).includes(props.cle)
+    const isValue = Object.values(page.props.tassiliSettings.sessionFilter).includes(props.cle)
 
     myInput.value = ''
     
     delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes)
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
 
   
     const url = new URL(window.location.href)

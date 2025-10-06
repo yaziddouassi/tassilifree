@@ -242,7 +242,7 @@ class ListingUtility
         $this->tassiliRecord[$key] = json_encode($tab1);
     }
 
-    public function getInertiaData(): array
+    public function getData(): array
     {
         return [
             'items' => $this->tables,
@@ -256,4 +256,32 @@ class ListingUtility
             'tassiliUrlStorage' => config('tassili.storage_url'),
         ];
     }
+
+
+    public function getInertiaData(): array
+    {
+        return [
+            'items' => $this->tables,
+            'user' => \Illuminate\Support\Facades\Auth::user(),
+            'routes' => \Tassili\Free\Models\TassiliCrud::where('active', true)->get(),
+
+            'tassiliDataModelLabel' => $this->tassiliSettings['tassiliDataModelLabel'],
+            'tassiliDataModelTitle' => $this->tassiliSettings['tassiliDataModelTitle'],
+            'tassiliDataRouteListe' => $this->tassiliSettings['tassiliDataRouteListe'],
+            'tassiliDataUrlCreate' =>  $this->tassiliSettings['tassiliDataUrlCreate'],
+            'tassiliModelClass' =>     $this->tassiliSettings['tassiliModelClass'],
+            'tassiliModelClassName' => $this->tassiliSettings['tassiliModelClassName'],
+            'paginationPerPageList' => $this->tassiliSettings['paginationPerPageList'],
+            'orderByFieldList' =>      $this->tassiliSettings['orderByFieldList'],
+            'orderDirectionList' =>    $this->tassiliSettings['orderDirectionList'],
+            'urlDelete' =>             $this->tassiliSettings['urlDelete'],
+
+            'allFilters' => $this->allFilters,
+            'customFilters' => $this->customFilters,
+            'groupActions' => $this->groupActions,
+            'tassiliFormList' => $this->tassiliFormList,
+            'tassiliUrlStorage' => config('tassili.storage_url'),
+        ];
+    }
+
 }

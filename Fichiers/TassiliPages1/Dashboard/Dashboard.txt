@@ -31,16 +31,9 @@
   import TopBarre from '@/Vendor/TassiliLibs/TopBarre.vue';
   import { TassiliRoutes } from '@/Vendor/TassiliLibs/stores/tassiliRoutes';
   import NavBarre from '@/Vendor/TassiliLibs/NavBarre.vue';
-
+  import { usePage } from '@inertiajs/vue3';
+  
   const props = defineProps({
-    user: {
-    type: Object,
-    required: true
-  },
-   routes: {
-    type: Object,
-    required: true
-  },
   chart1: {
     type: Object,
     required: true
@@ -80,13 +73,12 @@
 });
 
 const tassiliroutes  = TassiliRoutes();
+const page = usePage()
 
-tassiliroutes.setRoutes(props.routes)
+tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
 
-
-
-  </script>
+</script>
   
-  <style lang="css" scoped>
+<style lang="css" scoped>
   
-  </style>
+</style>

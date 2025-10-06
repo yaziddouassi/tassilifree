@@ -40,7 +40,7 @@
              
          </div>
          <div class="pl-[5px]">
-         <span>{{ page.props.user.name }}</span>
+         <span>{{ page.props.tassiliSettings.user.name }}</span>
         </div>
      </div>
 
@@ -104,7 +104,7 @@ function resetSession() {
 
   if (confirm('Do you want reset session ?')) {
     localStorage.removeItem('tassili')
-    tassiliroutes.setRoutes(page.props.routes)
+    tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
     router.get('/admin',{} ,{
       preserveScroll: false,
     })

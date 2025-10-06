@@ -68,7 +68,7 @@ function replaceQuery() {
 
   
   const tassili = JSON.parse(localStorage.getItem(panelStorage))
-  const isValue = Object.values(page.props.sessionFilter).includes(props.cle)
+  const isValue = Object.values(page.props.tassiliSettings.sessionFilter).includes(props.cle)
 
 
   if (myInput.value) {
@@ -79,7 +79,7 @@ function replaceQuery() {
     }
 
     localStorage.setItem(panelStorage, JSON.stringify(tassili))
-    tassiliroutes.setRoutes(page.props.routes)
+    tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
 
     const url = new URL(window.location.href)
     const params = new URLSearchParams(url.search)
@@ -95,7 +95,7 @@ function replaceQuery() {
    
      delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes)  
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)  
 
     const url = new URL(window.location.href)
     const params = new URLSearchParams(url.search)
@@ -117,7 +117,7 @@ function rezetInput() {
 
   delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
   localStorage.setItem(panelStorage, JSON.stringify(tassili))
-  tassiliroutes.setRoutes(page.props.routes) 
+  tassiliroutes.setRoutes(page.props.tassiliSettings.routes) 
 
   const url = new URL(window.location.href)
   const params = new URLSearchParams(url.search)

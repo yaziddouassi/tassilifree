@@ -78,7 +78,7 @@ function replaceQuery() {
 
 
    const tassili = JSON.parse(localStorage.getItem(panelStorage))
-   const isValue = Object.values(page.props.sessionFilter).includes(props.cle)
+   const isValue = Object.values(page.props.tassiliSettings.sessionFilter).includes(props.cle)
 
 
 timeout = setTimeout(() => {
@@ -89,7 +89,7 @@ if(myInput.value != '') {
 
       tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle] = myInput.value
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes)
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
   
   
      }
@@ -98,7 +98,7 @@ if(myInput.value != '') {
 
       delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes)  
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)  
 
 
        }
@@ -122,7 +122,7 @@ else if(myInput.value == '') {
 
      delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes)  
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)  
   
       
 
@@ -148,13 +148,13 @@ function rezetInput() {
 
   
   const tassili = JSON.parse(localStorage.getItem(panelStorage))
-  const isValue = Object.values(page.props.sessionFilter).includes(props.cle)
+  const isValue = Object.values(page.props.tassiliSettings.sessionFilter).includes(props.cle)
 
   myInput.value = ''
   
    delete tassili[page.props.tassiliSettings.tassiliModelClassName][props.cle]
       localStorage.setItem(panelStorage, JSON.stringify(tassili))
-      tassiliroutes.setRoutes(page.props.routes,page.props.tassiliPanel)  
+      tassiliroutes.setRoutes(page.props.tassiliSettings.routes)  
           
 
        const url = new URL(window.location.href)
@@ -182,4 +182,4 @@ function rezetInput() {
     if (!str) return ''
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
-  </script>
+</script>

@@ -12,13 +12,13 @@ export function listingService() {
    const tassililisting = TassiliListing();
    const tassiliInput = TassiliInput()
 
-   tassiliroutes.setRoutes(page.props.routes)
-   tassililisting.groupActions = page.props.groupActions
-   tassililisting.allFilters = page.props.allFilters
-   tassililisting.customFilters = page.props.customFilters
-   tassililisting.sessionFilter = page.props.sessionFilter
+   tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
+   tassililisting.groupActions = page.props.tassiliSettings.groupActions
+   tassililisting.allFilters = page.props.tassiliSettings.allFilters
+   tassililisting.customFilters = page.props.tassiliSettings.customFilters
+   tassililisting.sessionFilter = page.props.tassiliSettings.sessionFilter
    tassililisting.show = false 
-   tassiliInput.tassiliFormList = page.props.tassiliFormList
+   tassiliInput.tassiliFormList = page.props.tassiliSettings.tassiliFormList
   }
 
  
