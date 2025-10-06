@@ -100,7 +100,7 @@ function rezetFilter() {
   tassililisting.actionIds = []
   localStorage.setItem(panelStorage, JSON.stringify(tassili))
 
-  tassiliroutes.setRoutes(page.props.routes)
+  tassiliroutes.setRoutes(page.props.tassiliSettings.routes)
 
   router.visit(page.props.tassiliSettings.tassiliDataRouteListe, {
     method: 'get',
